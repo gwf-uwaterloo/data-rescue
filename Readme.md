@@ -12,7 +12,7 @@ convert_table_to_csv.py ----> A wrapper file to convert pdf files of all the yea
 search.py ------> This file is used to get data for all the years available for a particular station and save the data into csv file for different years.
 
 
-reformat.py ------> This file converts the data generated from search.py into the required format i.e. (location, id, date, data).
+reformat_data.py ------> This file converts the data generated from search.py into the required format i.e. (location, id, date, data).
 
 
 convert_tiff_to_pdf.py -------> Convert multiple tiff images to a single pdf file.
