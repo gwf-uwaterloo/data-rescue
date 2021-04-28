@@ -13,6 +13,7 @@ def get_num_columns(tess_data, counter):
     inputs:
     tess_data = output of tesseract on the whole image
     counter = index of table in page
+    ====================================
     Output:
     length: number of columns
     """
@@ -29,7 +30,19 @@ def get_num_columns(tess_data, counter):
     return length
 
 
-def tables_from_contours(img, cnt):
+def tables_from_contours(img,cnt):
+    """
+    From the contours generated from preprocessing
+    Identify the tables and stations regions in the image
+    ===============================================
+    Inputs:
+    img (numpy array): image
+    cnt (list): detected contours in image
+    ===============================================
+    Outputs:
+    tables (numpy array): Table arrays
+    stations_regions (numpy array): array of station region
+    """
     tables = []
     stations_regions = []
     for i in range(len(cnt)):
@@ -54,9 +67,15 @@ def tables_from_contours(img, cnt):
     return tables, stations_regions
 
 
-def get_station_names(input_image, output, station_init):
-    config = ("--psm 6 --oem 2 eng+rus -c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyz\
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ-./")
+def get_station_names(input_image, station_init):
+    """
+    Returns the name of the stations in each table
+    ==============================================
+    Inputs:
+    input_image(numpy array): image
+    station_init(list) : formatted output from tesseract
+    """
+    config = "--psm 6 --oem 2 eng -c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-./"
     img = cv2.imread(input_image, 0)
     PILimg = Image.fromarray(img)
     old_height, old_width = PILimg.size
@@ -70,11 +89,11 @@ def get_station_names(input_image, output, station_init):
 
     mask = np.zeros((h + 2, w + 2), np.uint8)
     # pick out the region containing the table using flood fill
-    cv2.floodFill(th, mask, (200, 200), 255);  # position = (200,200)
+    cv2.floodFill(th, mask, (200, 200), 255)  # position = (200,200)
     # invert colors
     out = cv2.bitwise_not(th)
     out = cv2.dilate(out, kernel, iterations=3)
-    # Edge detection using cv2.findcontours
+    # Edge detection
     cnt, h = cv2.findContours(out, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     min_area = -1

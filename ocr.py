@@ -1,5 +1,3 @@
-import os
-from PIL import Image
 import pytesseract
 import argparse
 import cv2

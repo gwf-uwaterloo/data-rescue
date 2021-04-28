@@ -24,21 +24,16 @@ In this section, we describe the steps required to setup and retrain the categor
 - Clone the project
 
 ```
-$ git clone https://gitlab.com/voyance-engineering/connecthub.git
+$ git clone https://github.com/gwf-uwaterloo/data-rescue.git
 ```
 
 - Create a virtual environment, install requirements
 ```
-$ python -m venv env
+$ python3 -m venv env
 
 (env) $ source env/bin/activate
-(env) $ cd ml
 (env) $ pip install -r requirements.txt
 
-```
-- Run retrain script
+More to follow....
 
-"path_to_data_file" is the file path of the retraining file
-```
-(env) $ python train.py --path 'path_to_data_file'
 ```

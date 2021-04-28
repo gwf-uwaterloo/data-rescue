@@ -2,6 +2,7 @@ import os
 ##"1986", "1987", "1988", "1989", "1990", 
 #years = ["1986", "1991"]
 #directory = "/Volumes/Seagate_Backup_Plus_Drive/Solar_Radiation_and_Radiation_Balance_Data/"
+
 directory = "TIFF/"
 temp_dir = directory
 for year in range(1980, 1992):
