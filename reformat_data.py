@@ -1,7 +1,4 @@
-import pandas as pd
 import csv
-from time import strptime
-
 
 def month_string_to_number(string):
     m = {
@@ -28,8 +25,7 @@ def month_string_to_number(string):
 
 flag = 0
 year = 1964
-# months_31 = ["JAN", "MAR", "MAY", "JUL", "AUG", "OCT", "DEC"]
-# months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+
 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
           "December"]
 months_31 = ["January", "March", "May", "July", "August", "October", "December"]
